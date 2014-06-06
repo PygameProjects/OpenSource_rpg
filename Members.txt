@@ -1,0 +1,26 @@
+Exemple:
+Mihai (name)
+(Description) blahblahblah........................................................blahblahblah
+Experience : x months/years
+Why do you want to enter? blahblahblah...........................................................
+
+
+
+Members:
+  
+  1.Mihai
+    I am from Romania, I am almost 14 years(my birthday: 30.06.2000) and I love programming.
+    There are no much things to say about me. I can say: I am ambitious, hardworking and I don't give up 
+    fast.
+    Experience: 8 months
+    I want to work with other people who loves programming and develop good softwares and maybe to make money.
+  
+  2.
+  
+  3.
+  
+  4.
+  
+  ...
+  
+  n.
