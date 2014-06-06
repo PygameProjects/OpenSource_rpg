@@ -8,7 +8,7 @@ members list after send me a pull request.
 Please make a short indroduction of you and read documentation of projects(in future).
 
 
-Necesary things
+Necessary things
 ==================
 You need to have minimum 2 months of python experience.
 You need to know:
