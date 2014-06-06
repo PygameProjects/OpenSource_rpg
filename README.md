@@ -12,10 +12,16 @@ Necesary things
 ==================
 You need to have minimum 2 months of python experience.
 You need to know:
+
 *basics of python(types of variables, printing, input...)
+
 *arrays
+
 *functions
+
 *classes
+
 *I/O files
+
 *English at a resonable level
 
