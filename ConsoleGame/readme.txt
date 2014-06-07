@@ -3,12 +3,13 @@ It will be a simple console game with some options
 and tasks.
 
 File organization of game:
-1. main.py #this is file where game will run
-2. player.py #all player functions
-3. rooms.py #all rooms of the game
-4. lexic.py #words what game reconize as commands
+1. main.py #this is the file where the game will run
+2. player.py #player class
+3. game.py #game class
+4. rooms.py #all rooms of the game
+5. lexic.py #words what the game recognizes as commands
 
-Game room's map:
+Game map:
 
           	 ____________
          path 	| main room  |     path
@@ -18,7 +19,7 @@ outside ======= |____________| ============ garden
 ||t    gold room===========||path               ||path
 ||h                        ||                   ||
 ||           path          ||        path       ||
-bedroom	===============	kitcken ============= hall
+bedroom	===============	kitchen ============= hall
 			   ||
 			   ||
 			   ||secret way
