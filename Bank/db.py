@@ -8,7 +8,7 @@ class DB(object):
   def __init__(self):
   # As far as I can tell it doesn't require any information 
   # to be provided during the initialization. Not yet anyway.
-	pass
+    pass
     
   def addUser(self, user):
     #add user to DB
