@@ -13,11 +13,11 @@ class DB(object):
     
   def addUser(self, user):
     #add user to DB
-    self.users.append(user)
+    self.users[user.username] = user
   
   def removeUser(self, user):
     #remove user from DB
-    self.users.remove(user)
+    del self.users[user.username]
   
   def changeAttribute(self, user, attribute, value):
     #access one attribute of a user and change his value
