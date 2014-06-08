@@ -51,3 +51,4 @@ class Bank(object):
     return transaction - transaction * precent
 
 
+#here bank is created
