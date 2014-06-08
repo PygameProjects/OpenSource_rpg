@@ -1,37 +1,32 @@
 from Bank import *
 
-# Initialize a DB object
-db = DB()
-
-
-def new_acc():
-	new_username = raw_input("\nNew Username: ")
-	new_password = raw_input("\nNew Password: ")
-	
-	db.users.append(new_username)
-	print "\nWelcome, " + new_username + "! \n"
+def register():
+  print "Register"
+  print "Complete all boxes!\n"
+  user = raw_input("User: ")
+  password = raw_input("Password: ")
+  money = raw_input("How much do you want to deposit? ")
+  income = raw_input("What is your income? ")
+  cash = raw_input("How much cash do you have? ")
+  if user and password and money and income and cash: #check if any box is empty
+    if user not in database.users.keys():
+      f = open('Account.py', 'a')
+      f.write('/n')
+      f.write(user + '=Account('+user+','+password+',"","waiting"')
+      f.write(user+'.money='+money)
+      f.write(user+'.income='+income)
+      f.write(user+'.proprieties["cash"]='+cash)
+      f.close()
+      
+      f = open('db.py', 'a')
+      f.write('\n')
+      f.write('database.addUser('+username+')')
+      f.close()
 
 def login():
-	username = raw_input("Username: ")
-	password = raw_input("\nPassword: ")
-	print "Login successful! \n"
+	
 	
 def main():
-	print "\nWelcome To The Bank\n\n"
-	new = raw_input("Are you new to our bank? [y/n]: ")
-	
-	if new == 'y':
-		create_acc = raw_input("\nWould you like to create an account? [y/n]: ")
-		
-		if create_acc == 'y':
-			new_acc()
-		elif create_acc == 'n':
-			print "Have a good day then. \n"
-		else:
-			print "Invalid input. Enter y for yes or n for no."
-				
-	elif new == 'n':
-		print "Welcome back then! \n"
-		login()
+
 	
 if __name__ == '__main__': main()
