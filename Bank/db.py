@@ -3,7 +3,8 @@ from Account import *
 class DB(object):
   """This keeps all users"""
   total_money = 0
-  users = []
+  users = {
+    } # 'name_of_account':variable_of_account
   
   def __init__(self):
   # As far as I can tell it doesn't require any information 
