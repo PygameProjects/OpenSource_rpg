@@ -1,4 +1,4 @@
-import account, db
+import db
 
 class Bank(object):
   """ This is a imaginary Bank server. """
