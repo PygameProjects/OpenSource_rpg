@@ -42,3 +42,4 @@ class Account(object):
   def borrow(self, amount, guarantee):
     #borrow money, but user must have a guarantee(proprieties)
     pass
+
