@@ -1,3 +1,5 @@
+import account
+
 class DB(object):
   """This keep all users"""
   total_money = 0
@@ -8,7 +10,7 @@ class DB(object):
     
   def addUser(self, user):
     #add user to DB
-    pass
+    self.users.append(user)
   
   def removeUser(self, user):
     #remove user from DB
@@ -19,3 +21,15 @@ class DB(object):
     pass
   
 database = DB('test', 'test')
+#test
+mihai = account.Account("Mihai", "TEST", "jkOpenWV23", "allowed")
+mihai.money = 1000
+mihai.total_debt = 300 
+mihai.pay_per_month = 30
+mihai.months = 10
+mihai.income = 200
+mihai.taxes = 5.0/100.0 * 1000
+mihai.proprieties = {
+  "cash":1000,
+  "house":10000
+  }
