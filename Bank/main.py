@@ -11,16 +11,15 @@ def register():
   if user and password and money and income and cash: #check if any box is empty
     if user not in database.users.keys():
       f = open('Account.py', 'a')
-      f.write('/n')
-      f.write(user + '=Account('+user+','+password+',"","waiting"')
-      f.write(user+'.money='+money)
-      f.write(user+'.income='+income)
-      f.write(user+'.proprieties["cash"]='+cash)
+      f.write(user + '=Account("'+user+'","'+password+'","","waiting)"\n')
+      f.write(user+'.money='+money+'\n')
+      f.write(user+'.income='+income+'\n')
+      f.write(user+'.proprieties["cash"]='+cash+'\n')
       f.close()
       
       f = open('db.py', 'a')
       f.write('\n')
-      f.write('database.addUser('+username+')')
+      f.write('database.addUser('+user+')')
       f.close()
 
 def login():
@@ -30,4 +29,4 @@ def login():
 def main():
   pass
 	
-if __name__ == '__main__': main()
+if __name__ == '__main__': print database.users['Mihai'].money

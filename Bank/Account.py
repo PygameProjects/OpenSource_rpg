@@ -44,3 +44,7 @@ class Account(object):
     pass
 
 #here accounts will be made
+Mihai=Account("Mihai","TEST","","waiting")
+Mihai.money=1000
+Mihai.income=300
+Mihai.proprieties["cash"]=500

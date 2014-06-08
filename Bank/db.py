@@ -25,3 +25,6 @@ class DB(object):
 
 #here database is initialized and users are registred
 database = DB()
+
+
+database.addUser(Mihai)
