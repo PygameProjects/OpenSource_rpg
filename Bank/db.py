@@ -1,12 +1,14 @@
 from Account import *
 
 class DB(object):
-  """This keep all users"""
+  """This keeps all users"""
   total_money = 0
   users = []
-  def __init__(self, bank_name, password):
-    self.bank_name = bank_name
-    self.password = password
+  
+  def __init__(self):
+  # As far as I can tell it doesn't require any information 
+  # to be provided during the initialization. Not yet anyway.
+	pass
     
   def addUser(self, user):
     #add user to DB
@@ -14,7 +16,7 @@ class DB(object):
   
   def removeUser(self, user):
     #remove user from DB
-    pass
+    self.users.remove(user)
   
   def changeAttribute(self, user, attribute, value):
     #access one attribute of a user and change his value

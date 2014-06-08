@@ -17,7 +17,7 @@ class Bank(object):
     name.status = 'banned'
   
   def allow_user(self, name):
-    #stop the bann of one user
+    #stop the ban of one user
     name.status = 'allowed'
   
   def enforcement(self, name):
