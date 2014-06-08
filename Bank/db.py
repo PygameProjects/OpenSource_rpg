@@ -23,3 +23,4 @@ class DB(object):
     pass
 
 #here database is initialized and users are registred
+database = DB()
