@@ -22,4 +22,4 @@ class DB(object):
     #access one attribute of a user and change his value
     pass
 
-#here accounts will be made
+#here database is initialized and users are registred
