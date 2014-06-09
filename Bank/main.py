@@ -25,14 +25,17 @@ def register():
   else: print "There are empty boxes!"
 
 def login():
+	log = False
   print "Log in!"
   user = raw_input("User: ")
   password = raw_input("Password: ")
   if user in database.users.keys():
     if database.users[user].password == password:
       print "You logged in!"
+      log = True
     else: print "Wrong password!"
   else: print "Username doesn't exist!"
+  return (log, user)
 	
 	
 def main():
@@ -40,11 +43,27 @@ def main():
   print "Type 'log in' to enter in your account, or 'sign up' to register."
   c = raw_input("> ")
   if c == 'log in':
-    login()
+    log, user = login()
+    if log == True:
+    	print '\n\n\n'
+    	admin_acc(user)
   elif c == 'sign up':
     register()
   else:
     print "This command doesn't exist!"
+    
+def admin_acc(user):
+	while True:
+		c = raw_input(user+"> ")
+		f = open("Bank.py", "a")
+		
+		if c == "buy":
+			item = raw_input("Item: ")
+			value = int(raw_input("Value: "))
+			if database.users[user].money >= value:
+				f.write("database.users["+user+"].buy('"+item+"',"+value+")\n")
+				f.close()
+				
 	
 if __name__ == '__main__':
   while True:
