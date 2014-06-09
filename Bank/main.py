@@ -25,7 +25,7 @@ def register():
   else: print "There are empty boxes!"
 
 def login():
-	log = False
+  log = False
   print "Log in!"
   user = raw_input("User: ")
   password = raw_input("Password: ")
@@ -53,16 +53,18 @@ def main():
     print "This command doesn't exist!"
     
 def admin_acc(user):
-	while True:
-		c = raw_input(user+"> ")
-		f = open("Bank.py", "a")
-		
-		if c == "buy":
-			item = raw_input("Item: ")
-			value = int(raw_input("Value: "))
-			if database.users[user].money >= value:
-				f.write("database.users["+user+"].buy('"+item+"',"+value+")\n")
-				f.close()
+  while True:
+    c = raw_input(user+"> ")
+    f = open("Bank.py", "a")
+
+    #in progress	
+    if c == "buy":
+      item = raw_input("Item: ")
+      value = int(raw_input("Value: "))
+      if database.users[user].money >= value:
+        database.users[user].buy(item, value)
+        f.write("database.users['"+user+"'].buy('"+item+"',"+str(value)+")\n")
+        f.close()
 				
 	
 if __name__ == '__main__':
