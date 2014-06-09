@@ -65,6 +65,33 @@ def admin_acc(user):
         database.users[user].buy(item, value)
         f.write("database.users['"+user+"'].buy('"+item+"',"+str(value)+")\n")
         f.close()
+      else: print "No enough money!"
+      
+    elif c == "sell":
+      item = raw_input("Item: ")
+      if item in database.users[user].proprieties.keys():
+        database.users[user].sell(item)
+        f.write("database.users['"+user+"'].buy('"+item+"'\n")
+        f.close()
+      else: print "You don't have this item!"
+      
+    elif c == "pay tax":
+      database.users[user].pay_tax()
+      f.write("database.users['"+user+"'].pay_tax()")
+      f.close()
+      
+    elif c == "withdraw":
+      amount = int(raw_input("How much money do you want to withdarw? "))
+      if database.users[user].money >= amount:
+        database.users[user].withdraw(amount)
+        f.write("database.users['"+user+"'].withdraw("+str(amount)+")")
+        f.close()
+      else: print "No enough money!"
+      
+    elif c == "deposit":
+      amount = int(raw_input("How much money do you want to deposit? "))
+      break
+      #in progress...
 				
 	
 if __name__ == '__main__':
