@@ -29,10 +29,10 @@ def login():
   user = raw_input("User: ")
   password = raw_input("Password: ")
   if user in database.users.keys():
-    if database.users[user].password = password:
+    if database.users[user].password == password:
       print "You logged in!"
-    print "Wrong password!"
-  print "Username doesn't exist!"
+    else: print "Wrong password!"
+  else: print "Username doesn't exist!"
 	
 	
 def main():
@@ -46,4 +46,7 @@ def main():
   else:
     print "This command doesn't exist!"
 	
-if __name__ == '__main__': main()
+if __name__ == '__main__':
+  while True:
+    main()
+    print "\n\n\n"
