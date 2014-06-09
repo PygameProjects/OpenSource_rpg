@@ -3,6 +3,7 @@ class Account(object):
   and keep their money here, to buy , sell and borrow
   proprieties -> dictionary with name of propriety and its value
   ststus -> allowed, banned, waiting(must be accepted by admin im max 3 days)"""
+  
   money = 0
   total_debt = 0
   pay_per_month = 0
@@ -12,19 +13,19 @@ class Account(object):
     }
   income = 0
   taxes = 0
-  
+
   def __init__(self, username, password, credit_card, status):
     self.username = username
     self.password = password
     self.credit_card = credit_card
     self.status = status
     
-  def buy(self, thing, value):
-    #add a thing to proprieties and pay for it
+  def buy(self, item, value):
+    #add an item to proprieties and pay for it
     pass
   
-  def sell(self, thing, value):
-    #sell a thing from proprieties
+  def sell(self, item, value):
+    #sell an item from proprieties
     pass
   
   def pay_tax(self):
