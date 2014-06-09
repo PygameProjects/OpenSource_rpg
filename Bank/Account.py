@@ -24,7 +24,7 @@ class Account(object):
     #add an item to proprieties and pay for it
     pass
   
-  def sell(self, item, value):
+  def sell(self, item):
     #sell an item from proprieties
     pass
   
