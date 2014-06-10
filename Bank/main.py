@@ -5,16 +5,19 @@ def register():
   print "Complete all boxes!\n"
   #request data from user
   user = raw_input("User: ")
+  #check if user exist already in database
+  while user in database.users.keys():
+    print "Username already exist! Choose another name."
+    user = raw_input("User: ")
   password = raw_input("Password: ")                    
   money = raw_input("How much do you want to deposit? ")
   income = raw_input("What is your income? ")
   cash = raw_input("How much cash do you have? ")
   
   if user and password and money and income and cash: #check if any box is empty
-    if user not in database.users.keys(): #check if user exist already in database
       f = open('Account.py', 'a') #open file whre will be wrote  the data
       #write data
-      f.write(user + '=Account("'+user+'","'+password+'","","waiting)"\n')
+      f.write(user + '=Account("'+user+'","'+password+'","","waiting")\n')
       f.write(user+'.money='+money+'\n')
       f.write(user+'.income='+income+'\n')
       f.write(user+'.proprieties["cash"]='+cash+'\n')
@@ -24,7 +27,6 @@ def register():
       f.write('\n')
       f.write('database.addUser('+user+')') #register user
       f.close() #close file
-    else: print "Username already exist!"
   else: print "There are empty boxes!"
 
 def login():
