@@ -28,3 +28,4 @@ database = DB()
 
 
 database.addUser(Mihai)
+database.addUser(Alex)

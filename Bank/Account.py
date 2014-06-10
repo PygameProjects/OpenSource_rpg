@@ -49,3 +49,7 @@ Mihai=Account("Mihai","TEST","","waiting")
 Mihai.money=1000
 Mihai.income=300
 Mihai.proprieties["cash"]=500
+Alex=Account("Alex","1234","","waiting)"
+Alex.money=1000
+Alex.income=3000
+Alex.proprieties["cash"]=6000
