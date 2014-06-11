@@ -1,6 +1,8 @@
 OpenSourceProjects
 ==================
 
+Our indentation: 2 spaces!!!
+
 Open Source Projects in Python, PHP, HTML and C
 If you want to help on our projects you must to fork this reperstory and add your name to
 members list after send me a pull request.
@@ -26,4 +28,6 @@ You need to know:
 *I/O files
 
 *English at a resonable level
+
+
 
