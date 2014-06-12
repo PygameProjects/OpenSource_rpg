@@ -34,7 +34,10 @@ class Account(object):
   
   def withdraw_money(self, amount):
     #withdraw an amount of money from account
-    pass
+    if amount>self.money:
+      self.money -= amount
+      self.proprieties["cash"] += amount
+    #pass
   
   def deposit_money(self, amount):
     #deposit an amount of money in bank
@@ -42,6 +45,7 @@ class Account(object):
     
   def borrow(self, amount, guarantee):
     #borrow money, but user must have a guarantee(proprieties)
+    if self.proprieties = """(75/100) *""" amount
     pass
 
 #here accounts will be made
