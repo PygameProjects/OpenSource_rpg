@@ -7,3 +7,5 @@ Ideas(fell free to add):
 -> Music Player
 -> Virtual CD-ROM
 -> Bank Software (only for fun)
+-> Space game(shoot down asteroids)
+-> Use Yandex translate API for a translator app
