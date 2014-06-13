@@ -1,6 +1,7 @@
 News!
 ==================
----
+Tomorrow , I will organize read me and wiki for projects.
+The Pygame project will start tomorrow too.
 
 OpenSourceProjects
 ==================
