@@ -71,11 +71,12 @@ def admin_acc(user):
         if c == "buy": #user buy
             item = raw_input("Item: ")
             value = int(raw_input("Value: "))
-        if database.users[user].money >= value: #check if user has enough money
-            database.users[user].buy(item, value) #user buy
-            f.write("database.users['"+user+"'].buy('"+item+"',"+str(value)+")\n") #write action on bank file so it can
-            f.close()                                                              #be read next time
-        else: print "No enough money!"
+            if database.users[user].money >= value: #check if user has enough money
+                database.users[user].buy(item, value) #user buy
+                f.write("database.users['"+user+"'].buy('"+item+"',"+str(value)+")\n") #write action on bank file so it can
+                f.close()                                                              #be read next time
+            else:
+                print "No enough money!"
       
         elif c == "sell": #user sell
             item = raw_input("Item: ")
@@ -99,10 +100,10 @@ def admin_acc(user):
             else: 
                 print "No enough money!"
       
-    elif c == "deposit": #user deposit money in bank
-        amount = int(raw_input("How much money do you want to deposit? "))
-        break
-        #in progress...
+        elif c == "deposit": #user deposit money in bank
+            amount = int(raw_input("How much money do you want to deposit? "))
+            break
+            #in progress...
 				
 	
 if __name__ == '__main__':
