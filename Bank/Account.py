@@ -2,7 +2,7 @@ class Account(object):
     """ Allow to user to have a personal account 
     and keep their money here, to buy , sell and borrow
     proprieties -> dictionary with name of propriety and its value
-    ststus -> allowed, banned, waiting(must be accepted by admin im max 3 days)"""
+    status -> allowed, banned, waiting(must be accepted by admin in max 3 days)"""
   
     money = 0
     total_debt = 0
@@ -22,11 +22,13 @@ class Account(object):
     
     def buy(self, item, value):
         #add an item to proprieties and pay for it
-        pass
+        self.proprieties[item] = value
+        self.money -= value
   
     def sell(self, item):
         #sell an item from proprieties
-        pass
+        self.money += self.proprieties[item]
+        del self.proprieties[item]
   
     def pay_tax(self):
         #pay monthly taxes
@@ -45,7 +47,9 @@ class Account(object):
     
     def borrow(self, amount, guarantee):
         #borrow money, but user must have a guarantee(proprieties)
-        pass
+        if self.proprieties > amount:
+            self.debt += amount
+            pass
 
 #here accounts will be made
 Mihai=Account("Mihai","TEST","","waiting")
