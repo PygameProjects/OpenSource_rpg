@@ -1,0 +1,37 @@
+How to change a list of supported Python versions?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* Open debian/debian_defaults file and change `supported-versions` variable
+* Open debian/control.in file and edit python-all, python-all-dev and
+  python-all-dbg's Depends line (add or remove pythonX.Y packages)
+* Open debian/pyversions.py file and edit `_supported_versions` list
+  around line 141
+* Open debpython/versions.py file and edit `SUPPORTED` list around
+  line 26
+
+
+How to change default Python version?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* Open debian/debian_defaults file and change `default-version` variable
+* Open debian/rules file and edit `VER` variable (default version), `NVER`
+  (default + 1 version) and `PVER` (default version with "python" prefix)
+* Open debian/pyversions.py file and edit `debian_default` variable around
+  line 171
+* Open debpython/versions.py file and edit `DEFAULT` variable around line 27
+
+
+How to bump minimum required Python version by dh_python2?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* Open debpython/depends.py file and edit `MINPYCDEP` variable around line 26
+
+
+How to regenerate dist_fallback file for dh_python2?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Please note that we recommend to extend this file instead
+(i.e. removing items from it can break other packages' dependencies)
+
+* Update pydist/sources.list file to point to your distro/suit
+* Remove pydist/dist_fallback file
+* Run `make dist_fallback`

@@ -1,3 +1,4 @@
+#!/usr/bin/python
 from Bank import *
 
 def register():

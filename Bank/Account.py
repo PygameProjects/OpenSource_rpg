@@ -45,7 +45,6 @@ class Account(object):
     
   def borrow(self, amount, guarantee):
     #borrow money, but user must have a guarantee(proprieties)
-    if self.proprieties = """(75/100) *""" amount
     pass
 
 #here accounts will be made
@@ -53,3 +52,7 @@ Mihai=Account("Mihai","TEST","","waiting")
 Mihai.money=1000
 Mihai.income=300
 Mihai.proprieties["cash"]=500
+TestUser=Account("TestUser","TestPassword","","waiting")
+TestUser.money=1000
+TestUser.income=500
+TestUser.proprieties["cash"]=1000
