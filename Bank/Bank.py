@@ -1,3 +1,5 @@
+import db
+reload(db)
 from db import *
 
 class Bank(object):
