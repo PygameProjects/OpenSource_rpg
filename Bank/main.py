@@ -1,3 +1,5 @@
+import Bank
+reload(Bank)
 from Bank import *
 
 def register():
@@ -30,6 +32,10 @@ def register():
   else: print "There are empty boxes!"
 
 def login():
+  import db
+  reload(db)
+  from db import database
+
   log = False #this variable say if user is logged in or not
   print "Log in!"
   #request data from user for log in
