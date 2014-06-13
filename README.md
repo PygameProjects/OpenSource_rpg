@@ -1,8 +1,6 @@
 News!
 ==================
-We are changing the indentation from 2 spaces to 4 spaces.
-So, until I don't say we finished, I don't accept any pull request.
-PS Alex please don't accept pull requests.
+---
 
 OpenSourceProjects
 ==================
