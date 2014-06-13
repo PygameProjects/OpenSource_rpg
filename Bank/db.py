@@ -1,3 +1,5 @@
+import Account
+reload(Account)
 from Account import *
 
 class DB(object):
@@ -28,3 +30,5 @@ database = DB()
 
 
 database.addUser(Mihai)
+database.addUser(tes9)
+database.addUser(pangeran)
