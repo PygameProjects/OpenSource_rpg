@@ -17,13 +17,19 @@ We are working with Python language for now, but we will use others languages
 in future.
 
 Projects in progress: 
+
 -> Virtual Bank in console (Python)
+
 -> A game (Python + Pygame)
 
 Python version: 3.4
+
 Indentation: 4 spaces
+
 Class style: Test(object)
+
 Functions syle: helloTest()
+
 Variables style: this_is_a_var
 
 How to add code?
