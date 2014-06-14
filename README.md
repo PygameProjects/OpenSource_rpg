@@ -2,6 +2,10 @@ News!
 ========================
 Our site: http://python-dev.tk/
 
+Pygame project is open! Start to write ideas for 
+logic of game, story and others! We will start code when we'll
+have ideas for start!
+
 en Source Projects!
 ========================
 Welcome to Open Source Projects repo. We are a group of little programers 
