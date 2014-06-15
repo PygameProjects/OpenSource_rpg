@@ -13,7 +13,11 @@ P_HEIGHT = 40
 
 TILESIZE = 20
 
-WHITE = (255, 255, 255)
+WHITE   = (255, 255, 255)
+BLACK   = (  0,   0,   0)
+GREEN   = (  0, 204,   0)
+GRAY    = ( 60,  60,  60)
+BLUE    = (  0,  50, 255)
 
 def main():
     # Initialize game object

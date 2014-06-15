@@ -2,16 +2,15 @@
 This file contains the Player class with any necessary methods
 to control the player which is by the way a sprite object.
 """
-
-
 import pygame
+from main import *
 
 
 class Player(pygame.sprite.Sprite):
 
     # Think of this as the velocity of the player
-    change_x = 0
-    change_y = 0
+    change_x = 1
+    change_y = 1
 
     def __init__(self, x, y, width, height, tile_size):
         pygame.sprite.Sprite.__init__(self)
@@ -39,7 +38,7 @@ class Player(pygame.sprite.Sprite):
         """
         Draws the player on the screen and updates
         """
-        pygame.draw.rect(screen, (0, 0, 0), [self.x * self.tile_size, self.y * self.tile_size, self.tile_size, self.tile_size], 0);
+        pygame.draw.rect(screen, BLACK, [self.x * self.tile_size, self.y * self.tile_size, self.tile_size, self.tile_size], 0);
 
     # Key down handler
     def keydown(self, key):
