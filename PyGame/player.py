@@ -13,60 +13,54 @@ class Player(pygame.sprite.Sprite):
     change_x = 0
     change_y = 0
 
-    def __init__(self, x, y, width, height):
+    def __init__(self, x, y, width, height, tile_size):
         pygame.sprite.Sprite.__init__(self)
 
         # Create player image and set the coordinates
         # of image rectangle
         self.image = pygame.Surface([width, height])
         self.rect = self.image.get_rect()
-        self.rect.x = x
-        self.rect.y = y
+        self.x = x
+        self.y = y
+        self.tile_size = tile_size
 
-    def change_speed(self, x, y):
+    def move(self, x, y):
         """
-        Changes the speed of the player
+        Changes the location of the player
         """
+        if x != 0:
+            new_x = self.x + x
+            self.x = new_x
+        if y != 0:
+            new_y = self.y + y
+            self.y = new_y
 
-        self.change_x += x
-        self.change_y += y
-
-    def update(self):
-        """
-        Updates the position of the player
-        """
-
-        # Move left/right
-        self.rect.x += self.change_x
-
-        # Move up/down
-        self.rect.y += self.change_y
-
-    def draw(self, surface):
+    def draw(self, screen):
         """
         Draws the player on the screen and updates
         """
-        surface.blit(self.image, self.rect)
+        pygame.draw.rect(screen, PLAYER_COLOUR, [self.x * tile_size, self.y * tile_size, tile_size, tile_size], 0);
+        #surface.blit(self.image, self.rect)
 
     # Key down handler
     def keydown(self, key):
         if key == pygame.K_UP:
-            self.change_speed(0, -5)
+            self.move(0, -1)
         elif key == pygame.K_DOWN:
-            self.change_speed(0, 5)
+            self.move(0, 1)
         elif key == pygame.K_RIGHT:
-            self.change_speed(5, 0)
+            self.move(1, 0)
         elif key == pygame.K_LEFT:
-            self.change_speed(-5, 0)
+            self.move(-1, 0)
 
     # Key up handler
     def keyup(self, key):
         if key == pygame.K_UP:
-            self.change_speed(0, 5)
+            self.move(0, 5)
         elif key == pygame.K_DOWN:
-            self.change_speed(0, -5)
+            self.move(0, -5)
         elif key == pygame.K_RIGHT:
-            self.change_speed(-5, 0)
+            self.move(-5, 0)
         elif key == pygame.K_LEFT:
-            self.change_speed(5, 0)
+            self.move(5, 0)
             

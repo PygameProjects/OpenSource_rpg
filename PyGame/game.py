@@ -9,7 +9,7 @@ from player import *
 
 
 class Game():
-    def __init__(self, screen_width, screen_height, player_width, player_height, background):
+    def __init__(self, screen_width, screen_height, player_width, player_height, tile_size, background):
         # Initialize pygame
         pygame.init()
 
@@ -21,9 +21,11 @@ class Game():
         self.clock = pygame.time.Clock()
 
         # Create a player object
-        self.player = Player(player_width, player_height, player_width, player_height)
+        self.player = Player(player_width, player_height, player_width, player_height, tile_size)
 
         self.background = background
+        
+        self.screen_width, self.screen_height = screen_width, screen_height
 
 
     # Draw handler
@@ -31,7 +33,6 @@ class Game():
         surface.fill(self.background)
 
         # Update and draw player
-        self.player.update()
         self.player.draw(surface)
 
         # Update the display
@@ -68,10 +69,6 @@ class Game():
                 # Key down events
                 elif event.type == pygame.KEYDOWN:
                     self.keydown(event.key)
-
-                # Key up events
-                elif event.type == pygame.KEYUP:
-                    self.keyup(event.key)
 
             # Drawing
             self.draw(self.screen)
