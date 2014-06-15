@@ -21,23 +21,12 @@ class Game():
         self.clock = pygame.time.Clock()
 
         # Create a player object
-        self.player = Player(player_width, player_height, player_width, player_height, tile_size)
+        player_x, player_y = 0, 0
+        self.player = Player(player_x, player_y, player_width, player_height, tile_size)
 
         self.background = background
         
         self.screen_width, self.screen_height = screen_width, screen_height
-
-
-    # Draw handler
-    def draw(self, surface):
-        surface.fill(self.background)
-
-        # Update and draw player
-        self.player.draw(surface)
-
-        # Update the display
-        pygame.display.flip()
-
 
     """
     Key down and key up handlers. Note:
@@ -45,7 +34,6 @@ class Game():
     to move the player but just in case
     we'll have it like that
     """
-
     def keydown(self, key):
         self.player.keydown(key)
 
@@ -56,8 +44,6 @@ class Game():
         """
         Method to run the game
         """
-
-        # Main loop of the game
         running = True
         while running:
             # Event processing
@@ -71,7 +57,13 @@ class Game():
                     self.keydown(event.key)
 
             # Drawing
-            self.draw(self.screen)
+            self.screen.fill(self.background)
+
+            # Update and draw player
+            self.player.draw(self.screen)
+
+            # Update the display
+            pygame.display.flip()
 
             # Set fps clock to 60 frames per second
             self.clock.tick(60)

@@ -39,8 +39,7 @@ class Player(pygame.sprite.Sprite):
         """
         Draws the player on the screen and updates
         """
-        pygame.draw.rect(screen, PLAYER_COLOUR, [self.x * tile_size, self.y * tile_size, tile_size, tile_size], 0);
-        #surface.blit(self.image, self.rect)
+        pygame.draw.rect(screen, (0, 0, 0), [self.x * self.tile_size, self.y * self.tile_size, self.tile_size, self.tile_size], 0);
 
     # Key down handler
     def keydown(self, key):

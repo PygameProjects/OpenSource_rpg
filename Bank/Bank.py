@@ -53,3 +53,4 @@ class Bank(object):
 
 #here bank is created
 TheBank = Bank("Python-Dev", 1000000)
+database.users['TestUser'].buy('bear',10)
