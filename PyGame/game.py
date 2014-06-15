@@ -3,9 +3,9 @@ This file will contain the Game class.
 This class will be responsible for every action that our
 main function was responsible for thus far.
 """
-
 # Import the Player class from our player.py module
 from player import *
+from main import *
 
 
 class Game():
@@ -21,12 +21,14 @@ class Game():
         self.clock = pygame.time.Clock()
 
         # Create a player object
-        player_x, player_y = 0, 0
+        player_x, player_y = 1, 1
         self.player = Player(player_x, player_y, player_width, player_height, tile_size)
 
         self.background = background
         
         self.screen_width, self.screen_height = screen_width, screen_height
+        
+        self.tile_size = tile_size
 
     """
     Key down and key up handlers. Note:
@@ -39,11 +41,19 @@ class Game():
 
     def keyup(self, key):
         self.player.keyup(key)
+        
+    def draw_room(self, screen):
+        for x in range(int(self.screen_width / self.tile_size)):
+            pygame.draw.rect(screen, GRAY, [x * self.tile_size, 0, self.tile_size, self.tile_size], 0);
+            pygame.draw.rect(screen, GRAY, [x * self.tile_size, self.screen_height - self.tile_size, self.tile_size, self.tile_size], 0);
+        for y in range(int(self.screen_height / self.tile_size)):
+            pygame.draw.rect(screen, GRAY, [0, y * self.tile_size, self.tile_size, self.tile_size], 0);
+            pygame.draw.rect(screen, GRAY, [self.screen_width - self.tile_size, y * self.tile_size, self.tile_size, self.tile_size], 0);            
 
     def run(self):
         """
         Method to run the game
-        """
+        """        
         running = True
         while running:
             # Event processing
@@ -58,6 +68,7 @@ class Game():
 
             # Drawing
             self.screen.fill(self.background)
+            self.draw_room(self.screen)
 
             # Update and draw player
             self.player.draw(self.screen)
