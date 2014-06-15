@@ -1,39 +1,47 @@
 News!
-==================
-We are changing the indentation from 2 spaces to 4 spaces.
-So, until I don't say we finished, I don't accept any pull request.
-PS Alex please don't accept pull requests.
+========================
+Our site: http://python-dev.tk/
 
-OpenSourceProjects
-==================
+Pygame project is open! Start to write ideas for 
+logic of game, story and others! We will start code when we'll
+have ideas for start!
 
-Our indentation: 4 spaces!!!
+Open Source Projects!
+========================
+Welcome to Open Source Projects repo. We are a group of little programers 
+who love what they do. We are here to develop some funny projects and 
+improve our programming skills. You are welcome to contribue to our
+projects. 
 
-Open Source Projects in Python, PHP, HTML and C
-If you want to help on our projects you must to fork this reperstory and add your name to
-members list after send me a pull request.
+Happy code!
 
-Please make a short indroduction of you and read documentation of projects(in future).
+Technical specifications
+==========================
+We are working with Python language for now, but we will use others languages
+in future.
 
-Our site: http://p.pw/babjMB
+Projects in progress: 
 
+-> Virtual Bank in console (Python)
 
-Necessary things
-==================
-You need to have minimum 2 months of python experience.
-You need to know:
+-> A game (Python + Pygame)
 
-*basics of python(types of variables, printing, input...)
+Python version: 3.4
 
-*arrays
+Indentation: 4 spaces
 
-*functions
+Class style: Test(object)
 
-*classes
+Functions syle: helloTest()
 
-*I/O files
+Variables style: this_is_a_var
 
-*English at a resonable level
+How to add code?
+===========================
+Only fork repo, add your name to members.txt, add your code to your forked
+repo and make a pull request. If you'll contribute enough code you can get
+Contributor rights.
+
 
 
 
