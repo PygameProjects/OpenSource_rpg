@@ -23,42 +23,22 @@ class Player(pygame.sprite.Sprite):
         self.y = y
         self.tile_size = tile_size
 
-    def move(self, x, y):
+    def move(self, x, y, tiles):
         """
         Changes the location of the player
         """
         if x != 0:
             new_x = self.x + x
-            self.x = new_x
+            if not tiles[self.y][new_x]:
+                self.x = new_x
         if y != 0:
             new_y = self.y + y
-            self.y = new_y
+            if not tiles[new_y][self.x]:
+                self.y = new_y
 
     def draw(self, screen):
         """
         Draws the player on the screen and updates
         """
         pygame.draw.rect(screen, BLACK, [self.x * self.tile_size, self.y * self.tile_size, self.tile_size, self.tile_size], 0);
-
-    # Key down handler
-    def keydown(self, key):
-        if key == pygame.K_UP:
-            self.move(0, -1)
-        elif key == pygame.K_DOWN:
-            self.move(0, 1)
-        elif key == pygame.K_RIGHT:
-            self.move(1, 0)
-        elif key == pygame.K_LEFT:
-            self.move(-1, 0)
-
-    # Key up handler
-    def keyup(self, key):
-        if key == pygame.K_UP:
-            self.move(0, 5)
-        elif key == pygame.K_DOWN:
-            self.move(0, -5)
-        elif key == pygame.K_RIGHT:
-            self.move(-5, 0)
-        elif key == pygame.K_LEFT:
-            self.move(5, 0)
             

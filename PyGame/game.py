@@ -6,6 +6,7 @@ main function was responsible for thus far.
 # Import the Player class from our player.py module
 from player import *
 from main import *
+from pprint import pprint as pp
 
 
 class Game():
@@ -29,6 +30,8 @@ class Game():
         self.screen_width, self.screen_height = screen_width, screen_height
         
         self.tile_size = tile_size
+        
+        self.tiles = self.generate_tiles()
 
     """
     Key down and key up handlers. Note:
@@ -42,13 +45,22 @@ class Game():
     def keyup(self, key):
         self.player.keyup(key)
         
-    def draw_room(self, screen):
-        for x in range(int(self.screen_width / self.tile_size)):
-            pygame.draw.rect(screen, GRAY, [x * self.tile_size, 0, self.tile_size, self.tile_size], 0);
-            pygame.draw.rect(screen, GRAY, [x * self.tile_size, self.screen_height - self.tile_size, self.tile_size, self.tile_size], 0);
+    def generate_tiles(self):
+        tiles = []
         for y in range(int(self.screen_height / self.tile_size)):
-            pygame.draw.rect(screen, GRAY, [0, y * self.tile_size, self.tile_size, self.tile_size], 0);
-            pygame.draw.rect(screen, GRAY, [self.screen_width - self.tile_size, y * self.tile_size, self.tile_size, self.tile_size], 0);            
+            tiles.append([])
+            for x in range(int(self.screen_width / self.tile_size)):
+                if x in (0, int(self.screen_width / self.tile_size) - 1) or y in (0, int(self.screen_height / self.tile_size) - 1):
+                    tiles[y].append(True)
+                else:
+                    tiles[y].append(False)
+        return tiles
+        
+    def draw_room(self, tiles, screen):
+        for y in range(len(tiles)):
+            for x in range(len(tiles[y])):
+                if tiles[y][x]:
+                    pygame.draw.rect(screen, GRAY, [x * self.tile_size, y * self.tile_size, self.tile_size, self.tile_size], 0);
 
     def run(self):
         """
@@ -61,14 +73,20 @@ class Game():
                 # If user hits 'x' exit
                 if event.type == pygame.QUIT:
                     running = False
-
                 # Key down events
                 elif event.type == pygame.KEYDOWN:
-                    self.keydown(event.key)
+                    if event.key == pygame.K_UP:
+                        self.player.move(0, -1, self.tiles)
+                    elif event.key == pygame.K_DOWN:
+                        self.player.move(0, 1, self.tiles)
+                    elif event.key == pygame.K_RIGHT:
+                        self.player.move(1, 0, self.tiles)
+                    elif event.key == pygame.K_LEFT:
+                        self.player.move(-1, 0, self.tiles)
 
             # Drawing
             self.screen.fill(self.background)
-            self.draw_room(self.screen)
+            self.draw_room(self.tiles, self.screen)
 
             # Update and draw player
             self.player.draw(self.screen)
