@@ -35,6 +35,12 @@ class Game():
         self.tiles = self.read_mapfile('map.txt')
         
     def read_mapfile(self, filename):
+        """
+        Reads a text file called filename and generates the map
+        
+        Input: Text file with spaces and #'s
+        Output: 2 dimensional array of booleans
+        """
         assert os.path.exists(filename), 'Cannot find the level file: %s' % (filename)
         
         # read file and store in a list
@@ -59,15 +65,18 @@ class Game():
         return levelmap
         
     def draw_room(self, tiles, screen):
+        """
+        Notes: Draws the room
+        Input:
+            tiles - 2 dimensional array of booleans, True is a wall block
+            screen - Pygame screen object
+        """
         for y in range(len(tiles)):
             for x in range(len(tiles[y])):
                 if tiles[y][x]:
                     pygame.draw.rect(screen, GRAY, [x * self.tile_size, y * self.tile_size, self.tile_size, self.tile_size], 0);
 
     def run(self):
-        """
-        Method to run the game
-        """        
         running = True
         while running:
             # Event processing
