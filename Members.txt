@@ -28,6 +28,10 @@ Members:
    I am from India. I love programming. I completed codecademy python course and i love playing around with it. I know basics of C. I
    I am 14 years old. I have been doing python for past 3-4 months. I want to enter because I want to get more experience and delve
    more into programming
+   
+  5. Wade (tp9)
+   I am from the U.S. Love hacking around with code. Python and Pygame fan. Hard to measure my experience in
+   month/years. Please check out my GitHub to get a feel for where I'm at.
     
   ...
   
