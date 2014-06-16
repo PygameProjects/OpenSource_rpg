@@ -4,6 +4,7 @@ This class will be responsible for every action that our
 main function was responsible for thus far.
 """
 # Import the Player class from our player.py module
+import os
 from player import *
 from main import *
 from pprint import pprint as pp
@@ -31,30 +32,31 @@ class Game():
         
         self.tile_size = tile_size
         
-        self.tiles = self.generate_tiles()
-
-    """
-    Key down and key up handlers. Note:
-    We are probably only going to need
-    to move the player but just in case
-    we'll have it like that
-    """
-    def keydown(self, key):
-        self.player.keydown(key)
-
-    def keyup(self, key):
-        self.player.keyup(key)
+        self.tiles = self.read_mapfile('map.txt')
         
-    def generate_tiles(self):
-        tiles = []
-        for y in range(int(self.screen_height / self.tile_size)):
-            tiles.append([])
-            for x in range(int(self.screen_width / self.tile_size)):
-                if x in (0, int(self.screen_width / self.tile_size) - 1) or y in (0, int(self.screen_height / self.tile_size) - 1):
-                    tiles[y].append(True)
-                else:
-                    tiles[y].append(False)
-        return tiles
+    def read_mapfile(self, filename):
+        assert os.path.exists(filename), 'Cannot find the level file: %s' % (filename)
+        
+        # read file and store in a list
+        mapfile_read = open(filename, 'r')
+        content = mapfile_read.readlines() + ['\r\n']
+        mapfile_read.close()
+
+        levelmap = []    
+        for linenum in range(len(content)):
+           # process each line that was in the level file
+            line = content[linenum].rstrip('\r\n')
+            if line != '':
+                levelmap.append([])
+                for i in line:
+                    if i == ' ':
+                        levelmap[linenum].append(False)
+                    elif i == '#':
+                        levelmap[linenum].append(True)
+                    else:
+                        print("UNKONWN CHARACTER IN MAP FILE")
+                
+        return levelmap
         
     def draw_room(self, tiles, screen):
         for y in range(len(tiles)):
