@@ -1,1 +1,1 @@
-Fell free to add description of game!
+Feel free to add a description of the game!
