@@ -24,8 +24,10 @@ class Player(pygame.sprite.Sprite):
         self.tile_size = tile_size
 
     def get_pos(self):
-        position = [self.x, self.y]
-        return position
+        return self.x, self.y
+
+    def set_pos(self, x, y):
+        self.x, self.y = x, y
 
     def move(self, x, y, tiles):
         """
