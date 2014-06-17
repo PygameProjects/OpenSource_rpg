@@ -70,9 +70,10 @@ class Game():
         (a.k.a save the game state)
         """
         save_game_file = shelve.open('save_game')
-
-        save_game_file['player_x_pos'] = self.player.get_pos()[0] 
-        save_game_file['player_y_pos'] = self.player.get_pos()[1] 
+        
+        x, y = self.player.get_pos()
+        save_game_file['player_posx'] = x
+        save_game_file['player_posy'] = y
         
         save_game_file.close()
 
@@ -82,10 +83,9 @@ class Game():
         (a.k.a load the game state)
         """
         save_game_file = shelve.open('save_game')
-
-        player.get_pos()[0] = save_game_file['player_x_pos']
-        player.get_pos()[1] = save_game_file['player_y_pos']
-
+        
+        self.player.set_pos(save_game_file['player_posx'], save_game_file['player_posy'])
+        
         save_game_file.close()
         
     def draw_room(self, tiles, screen):
@@ -101,7 +101,7 @@ class Game():
                     pygame.draw.rect(screen, GRAY, [x * self.tile_size, y * self.tile_size, self.tile_size, self.tile_size], 0);
 
     def run(self):
-        #self.load()
+        self.load()
         running = True
         while running:
             # Event processing
