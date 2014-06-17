@@ -42,9 +42,6 @@ class Player(pygame.sprite.Sprite):
             if not tiles[new_y][self.x]:
                 self.y = new_y
                 
-    def get_location(self):
-        return self.x, self.y
-
     def draw(self, screen):
         """
         Draws the player on the screen
