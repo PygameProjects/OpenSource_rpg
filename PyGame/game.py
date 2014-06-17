@@ -26,13 +26,12 @@ class Game():
         player_x, player_y = 1, 1
         self.player = Player(player_x, player_y, player_width, player_height, tile_size)
 
-        self.background = background
-        
-        self.screen_width, self.screen_height = screen_width, screen_height
-        
+        # Set the game environment
+        self.background = background        
+        self.screen_width, self.screen_height = screen_width, screen_height        
         self.tile_size = tile_size
-        
         self.tiles = self.read_mapfile('map.txt')
+        self.camerax, self.cameray = 0, 0
         
     def read_mapfile(self, filename):
         """
@@ -96,13 +95,20 @@ class Game():
                         self.player.move(-1, 0, self.tiles)
 
             # Drawing
-            self.screen.fill(self.background)
-            self.draw_room(self.tiles, self.screen)
+            self.screen.fill(self.background)            
+            mapsurf = pygame.Surface((self.screen_width, self.screen_height))
+            mapsurf.fill(BLUE)
+            
+            # Update and draw room
+            self.draw_room(self.tiles, mapsurf)
 
             # Update and draw player
-            self.player.draw(self.screen)
+            self.player.draw(mapsurf)
 
             # Update the display
+            mapsurf_rect = mapsurf.get_rect()
+            mapsurf_rect.center = (int(self.screen_width / 2) + self.camerax, int(self.screen_height / 2) - self.cameray)
+            self.screen.blit(mapsurf, mapsurf_rect)
             pygame.display.flip()
 
             # Set fps clock to 60 frames per second
