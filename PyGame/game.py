@@ -3,11 +3,11 @@ This file will contain the Game class.
 This class will be responsible for every action that our
 main function was responsible for thus far.
 """
-# Import the Player class from our player.py module
 import os
 from player import *
 from main import *
 from pprint import pprint as pp
+import shelve
 
 
 class Game():
@@ -62,6 +62,30 @@ class Game():
                         print("UNKONWN CHARACTER IN MAP FILE")
                 
         return levelmap
+
+    def save(self):
+        """
+        Write every variable value to a file using the shelve module.
+        (a.k.a save the game state)
+        """
+        save_game_file = shelve.open('save_game')
+        
+        x, y = self.player.get_pos()
+        save_game_file['player_posx'] = x
+        save_game_file['player_posy'] = y
+        
+        save_game_file.close()
+
+    def load(self):
+        """
+        Load all the variable values from a file created with save().
+        (a.k.a load the game state)
+        """
+        save_game_file = shelve.open('save_game')
+        
+        self.player.set_pos(save_game_file['player_posx'], save_game_file['player_posy'])
+        
+        save_game_file.close()
         
     def draw_room(self, tiles, mapsurf):
         """
@@ -76,12 +100,14 @@ class Game():
                     pygame.draw.rect(mapsurf, GRAY, [x * self.tile_size, y * self.tile_size, self.tile_size, self.tile_size], 0);
 
     def run(self):
+        self.load()
         running = True
         while running:
             # Event processing
             for event in pygame.event.get():
                 # If user hits 'x' exit
                 if event.type == pygame.QUIT:
+                    self.save()
                     running = False
                 # Key down events
                 elif event.type == pygame.KEYDOWN:
@@ -93,6 +119,8 @@ class Game():
                         self.player.move(1, 0, self.tiles)
                     elif event.key == pygame.K_LEFT:
                         self.player.move(-1, 0, self.tiles)
+                    elif event.key == pygame.K_q:
+                        screen2 = pygame.Surface([200,200])
 
             # Drawing
             self.screen.fill(self.background)            
