@@ -35,6 +35,9 @@ class Player(pygame.sprite.Sprite):
             new_y = self.y + y
             if not tiles[new_y][self.x]:
                 self.y = new_y
+                
+    def get_location(self):
+        return self.x, self.y
 
     def draw(self, screen):
         """

@@ -16,7 +16,7 @@ class Game():
         pygame.init()
 
         # Create screen and add title
-        self.screen = pygame.display.set_mode([screen_width, screen_height])
+        self.screen = pygame.display.set_mode((screen_width, screen_height))
         pygame.display.set_caption("Game")
 
         # FPS clock. Will be used to set max fps
@@ -31,7 +31,7 @@ class Game():
         self.screen_width, self.screen_height = screen_width, screen_height        
         self.tile_size = tile_size
         self.tiles = self.read_mapfile('map.txt')
-        self.camerax, self.cameray = 0, 0
+        self.camerax, self.cameray = 200, -300
         
     def read_mapfile(self, filename):
         """
@@ -63,17 +63,17 @@ class Game():
                 
         return levelmap
         
-    def draw_room(self, tiles, screen):
+    def draw_room(self, tiles, mapsurf):
         """
         Notes: Draws the room
         Input:
             tiles - 2 dimensional array of booleans, True is a wall block
-            screen - Pygame screen object
+            mapsurf - Pygame map object
         """
         for y in range(len(tiles)):
             for x in range(len(tiles[y])):
                 if tiles[y][x]:
-                    pygame.draw.rect(screen, GRAY, [x * self.tile_size, y * self.tile_size, self.tile_size, self.tile_size], 0);
+                    pygame.draw.rect(mapsurf, GRAY, [x * self.tile_size, y * self.tile_size, self.tile_size, self.tile_size], 0);
 
     def run(self):
         running = True
@@ -96,21 +96,40 @@ class Game():
 
             # Drawing
             self.screen.fill(self.background)            
-            mapsurf = pygame.Surface((self.screen_width, self.screen_height))
-            mapsurf.fill(BLUE)
+            mapsurf = pygame.Surface((2000, 1000))
+            mapsurf.fill(WHITE)
             
             # Update and draw room
             self.draw_room(self.tiles, mapsurf)
 
             # Update and draw player
             self.player.draw(mapsurf)
-
+            
             # Update the display
             mapsurf_rect = mapsurf.get_rect()
             mapsurf_rect.center = (int(self.screen_width / 2) + self.camerax, int(self.screen_height / 2) - self.cameray)
             self.screen.blit(mapsurf, mapsurf_rect)
             pygame.display.flip()
 
+            # Update the camera
+            playerx, playery = self.player.get_location()
+            # Player x coordinate in relation to mapsurf
+            playerx *= self.tile_size
+            playerx += mapsurf_rect.left
+            # Player y coordinate in relation to mapsurf
+            playery *= self.tile_size
+            playery += mapsurf_rect.top
+            
+            screen_rect = self.screen.get_rect()
+            if screen_rect.bottom - playery < 100:
+                self.cameray += self.tile_size
+            elif playery - screen_rect.top < 100:
+                self.cameray -= self.tile_size
+            if screen_rect.right - playerx < 100:
+                self.camerax -= self.tile_size
+            elif playerx - screen_rect.left < 100:
+                self.camerax += self.tile_size
+            
             # Set fps clock to 60 frames per second
             self.clock.tick(60)
 
