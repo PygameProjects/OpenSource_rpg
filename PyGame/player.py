@@ -41,7 +41,7 @@ class Player(pygame.sprite.Sprite):
             new_y = self.y + y
             if not tiles[new_y][self.x]:
                 self.y = new_y
-
+                
     def draw(self, screen):
         """
         Draws the player on the screen
