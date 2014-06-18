@@ -84,7 +84,9 @@ class Game():
         """
         save_game_file = shelve.open('save_game')
         
-        self.player.set_pos(save_game_file['player_posx'], save_game_file['player_posy'])
+        #self.player.set_pos(save_game_file['player_posx'], save_game_file['player_posy'])
+        self.player.x = save_game_file['player_posx']
+        self.player.y = save_game_file['player_posy']
         
         save_game_file.close()
         
@@ -98,17 +100,16 @@ class Game():
         for y in range(len(tiles)):
             for x in range(len(tiles[y])):
                 if tiles[y][x]:
-                    pygame.draw.rect(screen, GRAY, [x * self.tile_size, y * self.tile_size, self.tile_size, self.tile_size], 0);
+                    pygame.draw.rect(screen, GRAY, [x * self.tile_size, y * self.tile_size, self.tile_size, self.tile_size], 0)
 
     def run(self):
-        #self.load()
         running = True
         while running:
-            # Event processing
+			# Event processing
             for event in pygame.event.get():
-                # If user hits 'x' exit
+				# If user hits 'x' exit
                 if event.type == pygame.QUIT:
-                    #self.save()
+                    self.save()
                     running = False
                 # Key down events
                 elif event.type == pygame.KEYDOWN:
@@ -120,6 +121,10 @@ class Game():
                         self.player.move(1, 0, self.tiles)
                     elif event.key == pygame.K_LEFT:
                         self.player.move(-1, 0, self.tiles)
+                    
+                    # Load the game
+                    elif event.key == pygame.K_l:
+                        self.load()
 
             # Drawing
             self.screen.fill(self.background)
