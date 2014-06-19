@@ -19,6 +19,10 @@ GREEN   = (  0, 204,   0)
 GRAY    = ( 60,  60,  60)
 BLUE    = (  0,  50, 255)
 
+WALL    = '#'
+KEY     = '@'
+GOLD    = '$'
+
 def main():
     # Initialize game object
     game = Game(S_WIDTH, S_HEIGHT, P_WIDTH, P_HEIGHT, TILESIZE, WHITE)

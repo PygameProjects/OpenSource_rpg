@@ -39,9 +39,9 @@ class Game():
         Reads a text file called filename and generates the map
         
         Input: Text file with spaces and the following characters 
-            # - Wall
-            @ - Key
-            $ - Gold
+            # - WALL
+            @ - KEY
+            $ - GOLD
         Output: 2 dimensional array of booleans
         """
         assert os.path.exists(filename), 'Cannot find the level file: %s' % (filename)
@@ -60,7 +60,7 @@ class Game():
                 for i in line:
                     if i == ' ':
                         levelmap[linenum].append('.')
-                    elif i in ('#', '@', '$'):
+                    elif i in (WALL, KEY, GOLD):
                         levelmap[linenum].append(i)
                     else:
                         print("UNKONWN CHARACTER IN MAP FILE")
@@ -103,11 +103,11 @@ class Game():
             for x in range(len(tiles[y])):
                 tile = tiles[y][x]
                 if tile != '.':
-                    if tile == '#':
+                    if tile == WALL:
                         pygame.draw.rect(mapsurf, GRAY, [x * self.tile_size, y * self.tile_size, self.tile_size, self.tile_size], 0);
-                    elif tile == '@':
+                    elif tile == KEY:
                         pygame.draw.circle(mapsurf, BLUE, [x * self.tile_size + self.half_tile_size, y * self.tile_size + self.half_tile_size], self.half_tile_size, 0);                    
-                    elif tile == '$':
+                    elif tile == GOLD:
                         pygame.draw.circle(mapsurf, GREEN, [x * self.tile_size + self.half_tile_size, y * self.tile_size + self.half_tile_size], self.half_tile_size, 0);                                            
 
     def run(self):
