@@ -133,6 +133,9 @@ class Game():
                     # Load the game with the "L" key
                     elif event.key == pygame.K_l:
                         self.load()
+                    # Get item
+                    elif event.key == pygame.K_g:
+                        self.player.get_item(self.tiles)
 
             # Drawing
             self.screen.fill(self.background)            
