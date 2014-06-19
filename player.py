@@ -35,11 +35,11 @@ class Player(pygame.sprite.Sprite):
         """
         if x != 0:
             new_x = self.x + x
-            if not tiles[self.y][new_x]:
+            if not tiles[self.y][new_x] == '#':
                 self.x = new_x
         if y != 0:
             new_y = self.y + y
-            if not tiles[new_y][self.x]:
+            if not tiles[new_y][self.x] == '#':
                 self.y = new_y
                 
     def draw(self, screen):
