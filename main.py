@@ -22,6 +22,7 @@ BLUE    = (  0,  50, 255)
 WALL    = '#'
 KEY     = '@'
 GOLD    = '$'
+DOOR    = '-'
 
 def main():
     # Initialize game object
