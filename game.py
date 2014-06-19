@@ -30,6 +30,7 @@ class Game():
         self.background = background        
         self.screen_width, self.screen_height = screen_width, screen_height        
         self.tile_size = tile_size
+        self.half_tile_size = int(tile_size / 2)
         self.tiles = self.read_mapfile('map.txt')
         self.camerax, self.cameray = 200, -300
         
@@ -37,7 +38,10 @@ class Game():
         """
         Reads a text file called filename and generates the map
         
-        Input: Text file with spaces and #'s
+        Input: Text file with spaces and the following characters 
+            # - WALL
+            @ - KEY
+            $ - GOLD
         Output: 2 dimensional array of booleans
         """
         assert os.path.exists(filename), 'Cannot find the level file: %s' % (filename)
@@ -55,9 +59,9 @@ class Game():
                 levelmap.append([])
                 for i in line:
                     if i == ' ':
-                        levelmap[linenum].append(False)
-                    elif i == '#':
-                        levelmap[linenum].append(True)
+                        levelmap[linenum].append('.')
+                    elif i in (WALL, KEY, GOLD):
+                        levelmap[linenum].append(i)
                     else:
                         print("UNKONWN CHARACTER IN MAP FILE")
                 
@@ -97,8 +101,14 @@ class Game():
         """
         for y in range(len(tiles)):
             for x in range(len(tiles[y])):
-                if tiles[y][x]:
-                    pygame.draw.rect(mapsurf, GRAY, [x * self.tile_size, y * self.tile_size, self.tile_size, self.tile_size], 0);
+                tile = tiles[y][x]
+                if tile != '.':
+                    if tile == WALL:
+                        pygame.draw.rect(mapsurf, GRAY, [x * self.tile_size, y * self.tile_size, self.tile_size, self.tile_size], 0);
+                    elif tile == KEY:
+                        pygame.draw.circle(mapsurf, BLUE, [x * self.tile_size + self.half_tile_size, y * self.tile_size + self.half_tile_size], self.half_tile_size, 0);                    
+                    elif tile == GOLD:
+                        pygame.draw.circle(mapsurf, GREEN, [x * self.tile_size + self.half_tile_size, y * self.tile_size + self.half_tile_size], self.half_tile_size, 0);                                            
 
     def run(self):
         running = True
@@ -123,6 +133,9 @@ class Game():
                     # Load the game with the "L" key
                     elif event.key == pygame.K_l:
                         self.load()
+                    # Get item
+                    elif event.key == pygame.K_g:
+                        self.player.get_item(self.tiles)
 
             # Drawing
             self.screen.fill(self.background)            
