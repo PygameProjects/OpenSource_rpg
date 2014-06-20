@@ -31,7 +31,7 @@ class Game():
         self.screen_width, self.screen_height = screen_width, screen_height        
         self.tile_size = tile_size
         self.half_tile_size = int(tile_size / 2)
-        self.tiles = self.read_mapfile('map.txt')
+        self.tiles = self.read_mapfile(MAPFILE)
         self.camerax, self.cameray = 200, -300
         
     def read_mapfile(self, filename):
@@ -58,16 +58,26 @@ class Game():
             if line != '':
                 levelmap.append([])
                 for i in line:
-                    if i == ' ':
-                        levelmap[linenum].append('.')
-                    elif i in (WALL, KEY, GOLD, DOOR):
+                    if i in (WALL, KEY, GOLD, DOOR, '.'):
                         levelmap[linenum].append(i)
                     else:
                         print("UNKONWN CHARACTER IN MAP FILE")
                 
         return levelmap
+        
+    def save_mapfile(self, tiles, filename):
+        # Check if the file exists
+        assert os.path.exists(filename), 'Cannot find the level file: %s' % (filename)
 
-    def save(self):
+        mapfile_write = open(filename, 'w')
+        for i in tiles:
+            line = ''.join(i)
+            mapfile_write.write(line)
+            mapfile_write.write('\n')
+        mapfile_write.write('\n')
+        mapfile_write.close()
+
+    def save(self, tiles):
         """
         Write every variable value to a file using the shelve module.
         (a.k.a save the game state)
@@ -79,6 +89,15 @@ class Game():
         save_game_file['player_posy'] = y
         
         save_game_file.close()
+        
+        # Save the map
+        self.save_mapfile(tiles, MAPFILE)
+        
+    def save_exists(self):
+        """
+        Checks if a save already exists, returns False if not
+        """
+        return ('player_posx' in shelve.open('save_game'))
 
     def load(self):
         """
@@ -111,15 +130,16 @@ class Game():
                         pygame.draw.circle(mapsurf, BLUE, [x * self.tile_size + self.half_tile_size, y * self.tile_size + self.half_tile_size], self.half_tile_size, 0);                    
                     elif tile == GOLD:
                         pygame.draw.circle(mapsurf, GREEN, [x * self.tile_size + self.half_tile_size, y * self.tile_size + self.half_tile_size], self.half_tile_size, 0);                                            
+    
+    def get_tiles(self):
+        return self.tiles
 
     def run(self):
         running = True
         while running:
             # Event processing
             for event in pygame.event.get():
-                # If user hits 'x' exit
                 if event.type == pygame.QUIT:
-                    self.save()
                     running = False
                 # Key down events
                 elif event.type == pygame.KEYDOWN:
@@ -181,5 +201,3 @@ class Game():
             
             # Set fps clock to 60 frames per second
             self.clock.tick(60)
-
-        pygame.quit()

@@ -1,4 +1,2 @@
-'player_x_pos', (0, 5)
-'player_y_pos', (512, 5)
-'player_posx', (1024, 5)
-'player_posy', (1536, 5)
+'player_posx', (0, 5)
+'player_posy', (512, 5)
