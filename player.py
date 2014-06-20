@@ -39,12 +39,24 @@ class Player(pygame.sprite.Sprite):
         """
         if x != 0:
             new_x = self.x + x
-            if not tiles[self.y][new_x] == WALL:
+            if not tiles[self.y][new_x] in (WALL, DOOR):
                 self.x = new_x
         if y != 0:
             new_y = self.y + y
-            if not tiles[new_y][self.x] == WALL:
+            if not tiles[new_y][self.x] in (WALL, DOOR):
                 self.y = new_y
+                
+    def search_area(self, tiles, item):
+        if item == tiles[self.y][self.x + 1]:
+            return self.x + 1, self.y
+        elif item == tiles[self.y][self.x - 1]:
+            return self.x - 1, self.y 
+        elif item == tiles[self.y + 1][self.x]:
+            return self.x, self.y + 1
+        elif item == tiles[self.y - 1][self.x]:
+            return self.x, self.y - 1 
+        else:
+            return None, None
                 
     def get_item(self, tiles):
         """
@@ -59,7 +71,13 @@ class Player(pygame.sprite.Sprite):
             
     def get_inventory(self):
         return self.inventory
-            
+
+    def use_key(self, tiles):
+        if KEY in self.inventory['pouch']:
+            x, y = self.search_area(tiles = tiles, item = DOOR)
+            if x != None:
+                tiles[y][x] = '.'
+                self.inventory['pouch'].remove(KEY)
                 
     def draw(self, screen):
         """

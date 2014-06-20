@@ -8,28 +8,19 @@ Why do you want to enter? blahblahblah..........................................
 
 Members:
   
-  1.Mihai
+  Mihai
     I am from Romania, I am almost 14 years(my birthday: 30.06.2000) and I love programming.
     There are no much things to say about me. I can say: I am ambitious, hardworking and I don't give up 
     fast.
     Experience: 8 months
     I want to work with other people who loves programming and develop good softwares and maybe to make money.
   
-  2.Alex Georgousis
+  Alex Georgousis
     I'm from Greece and I'm 17 years old. I've been working with Python2 for a bit over a year now.
     I've been looking for some people to work with for some time because doing stuff alone isn't as much fun
     plus we can build much more if we work together. Hope to see many people joining soon.
   
-  3.Pangeran Bottor
-    I'm from Indonesia. Newbie in programming. Still figuring out what kind of spesific field that suit for me, so I decided to
-    start/involve in some projects.
-  
-  4.Aditya
-   I am from India. I love programming. I completed codecademy python course and i love playing around with it. I know basics of C. I
-   I am 14 years old. I have been doing python for past 3-4 months. I want to enter because I want to get more experience and delve
-   more into programming
-   
-  5. Wade (tp9)
+  Wade (tp9)
    I am from the U.S. Love hacking around with code. Python and Pygame fan. Hard to measure my experience in
    month/years. Please check out my GitHub to get a feel for where I'm at.
     

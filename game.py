@@ -60,7 +60,7 @@ class Game():
                 for i in line:
                     if i == ' ':
                         levelmap[linenum].append('.')
-                    elif i in (WALL, KEY, GOLD):
+                    elif i in (WALL, KEY, GOLD, DOOR):
                         levelmap[linenum].append(i)
                     else:
                         print("UNKONWN CHARACTER IN MAP FILE")
@@ -105,6 +105,8 @@ class Game():
                 if tile != '.':
                     if tile == WALL:
                         pygame.draw.rect(mapsurf, GRAY, [x * self.tile_size, y * self.tile_size, self.tile_size, self.tile_size], 0);
+                    elif tile == DOOR:
+                        pygame.draw.rect(mapsurf, BLUE, [x * self.tile_size, y * self.tile_size, self.tile_size, self.tile_size], 0);                    
                     elif tile == KEY:
                         pygame.draw.circle(mapsurf, BLUE, [x * self.tile_size + self.half_tile_size, y * self.tile_size + self.half_tile_size], self.half_tile_size, 0);                    
                     elif tile == GOLD:
@@ -136,6 +138,10 @@ class Game():
                     # Get item
                     elif event.key == pygame.K_g:
                         self.player.get_item(self.tiles)
+                    elif event.key == pygame.K_u:
+                        self.player.use_key(self.tiles)
+                    elif event.key == pygame.K_i:
+                        print(self.player.get_inventory())
 
             # Drawing
             self.screen.fill(self.background)            
