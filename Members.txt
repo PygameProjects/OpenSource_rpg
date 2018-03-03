@@ -23,7 +23,12 @@ Members:
   Wade (tp9)
    I am from the U.S. Love hacking around with code. Python and Pygame fan. Hard to measure my experience in
    month/years. Please check out my GitHub to get a feel for where I'm at.
-    
+   
+   Tejas (Spyninja3000)
+   I'm from the U.S. I love python and I've been looking for a nice open-source project for a while to devote some time and
+   skills to. I'm reggie to see what we can do and what we can build!
+   Experience: About a year or so with python, but about 4 years with game development in general. 
+   I'm very excited to build stuff with pygame along with other like-minded people! 
   ...
   
   n.

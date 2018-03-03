@@ -9,3 +9,6 @@ Ideas(fell free to add):
 -> Bank Software (only for fun)
 -> Space game(shoot down asteroids)
 -> Use Yandex translate API for a translator app
+-> A game that transitions from text-based to 2D to 3D (and maybe to VR???) Might be possible using Python VR modules.
+-> A game that slowly collapses onto the player by making it increasingly harder for the player to control the avatar or influence the avatar's decisions
+-> A game where your main rival learns you play style through machine learning and adapts to make it EXTRA HARD for the player to beat it after the first couple of games
