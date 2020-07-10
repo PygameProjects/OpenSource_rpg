@@ -1,4 +1,4 @@
-Ideas(fell free to add):
+Ideas(feel free to add):
 
 -> A Web page with cgi or Django
 -> A Mario game with Pygame
@@ -9,3 +9,4 @@ Ideas(fell free to add):
 -> Bank Software (only for fun)
 -> Space game(shoot down asteroids)
 -> Use Yandex translate API for a translator app
+->sudoku puzzle
