@@ -1,11 +1,4 @@
 Ideas(fell free to add):
 
--> A Web page with cgi or Django
--> A Mario game with Pygame
-->A cleaner application for Windows
--> Linux theme
--> Music Player
--> Virtual CD-ROM
--> Bank Software (only for fun)
--> Space game(shoot down asteroids)
--> Use Yandex translate API for a translator app
+-> A Web page with Django  for this game
+
