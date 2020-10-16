@@ -20,13 +20,14 @@ S_HEIGHT = 500
 P_WIDTH = 20
 P_HEIGHT = 40
 
-TILESIZE = 20
+TILESIZE = 30
 
-WHITE   = (255, 255, 255)
-BLACK   = (  0,   0,   0)
-GREEN   = (  0, 204,   0)
-GRAY    = ( 60,  60,  60)
-BLUE    = (  0,  50, 255)
+# little bit colored( I dislike bright colors)
+WHITE   = (240, 225, 250) 
+BLACK   = (  10,   10,   0)
+GREEN   = (  0, 204,   20)
+GRAY    = ( 75,  45,  60)
+BLUE    = (  10,  60, 245)
 
 WALL    = '#'
 KEY     = '@'
@@ -37,7 +38,6 @@ OPTION_SELECTED = None  # Global for the menu system
 MAPFILE = 'map.txt'     # Map text file
 
 def optionX(option):
-    global OPTION_SELECTED
     OPTION_SELECTED = option
     
 def draw_menu(menu, screen):
@@ -65,7 +65,7 @@ def main():
             break
     
     if OPTION_SELECTED == "quit":
-        print("Aww, that's too bad! See you next time!")
+        print("So, see you next time!")
         pygame.quit()
         sys.exit()
     else:

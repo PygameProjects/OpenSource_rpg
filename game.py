@@ -32,7 +32,7 @@ class Game():
         self.tile_size = tile_size
         self.half_tile_size = int(tile_size / 2)
         self.tiles = self.read_mapfile(MAPFILE)
-        self.camerax, self.cameray = 200, -300
+        self.camerax, self.cameray = 250, -350 #Resizing things
         
     def read_mapfile(self, filename):
         """
