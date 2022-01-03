@@ -24,6 +24,9 @@ Members:
    I am from the U.S. Love hacking around with code. Python and Pygame fan. Hard to measure my experience in
    month/years. Please check out my GitHub to get a feel for where I'm at.
     
+  Edward 
+   I love programming with all my hard.
+   Django developer
   ...
   
   n.
